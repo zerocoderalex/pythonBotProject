@@ -8,9 +8,15 @@ import random
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
+@dp.message(Command('photo'))
+async def photo(message: Message):
+    slist = ['фото1',  'фото2']
+    rand_photo = random.choice(slist)
+    await message.answer_photo(photo=rand_photo, caption='Это супер крутая картинка')
+
 @dp.message(F.photo)
-async def answ_photo(message: Message):
-    spis = ['Ого, какая фотка!', 'Что это такое?', 'Не отправляй мне такое больше']
+async def react_photo(message: Message):
+    spis = ['Ого, какая фотка!', 'Непонятно, что это такое', 'Не отправляй мне такое больше']
     rand_answ = random.choice(spis)
     await message.answer(rand_answ)
 
