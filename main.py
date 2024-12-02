@@ -10,7 +10,7 @@ dp = Dispatcher()
 
 @dp.message(Command('photo'))
 async def photo(message: Message):
-    slist = ['фото1',  'фото2']
+    slist = ['https://cdn.creazilla.com/cliparts/1684366/cloud-with-rain-clipart-sm.png', 'https://cdn.creazilla.com/cliparts/7769144/sun-clouds-rainbow-clipart-md.png']
     rand_photo = random.choice(slist)
     await message.answer_photo(photo=rand_photo, caption='Это супер крутая картинка')
 
