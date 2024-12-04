@@ -20,6 +20,7 @@ async def react_photo(message: Message):
     spis = ['Ого, какая фотка!', 'Непонятно, что это такое', 'Не отправляй мне такое больше']
     rand_answ = random.choice(spis)
     await message.answer(rand_answ)
+    await bot.download(message.photo[-1], destination=f'img/{message.photo[-1].file_id}.jpg')
 
 @dp.message(F.text =='Кто ты?')
 async def answ_mes(message: Message):
@@ -31,8 +32,7 @@ async def helps(message: Message):
 
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer("Привет, я бот!")
-
+    await message.answer(f'Привет, бот  {message.from_user.first_name}!')
 
 @dp.message(Command('weather'))
 async def weather(message: Message):
@@ -46,6 +46,10 @@ async def weather(message: Message):
         await message.answer(f'Температура в Москве: {temp}°C')
     else:
         await message.answer('Не удалось получить данные о погоде.')
+
+@dp.message()
+async def start(message: Message):
+    await message.send_copy(chat_id=message.chat.id)
 
 async def main():
     await dp.start_polling(bot)
