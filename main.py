@@ -63,7 +63,7 @@ async def react_photo(message: Message):
 
 @dp.message(Command('help'))
 async def helps(message: Message):
-    await message.answer("Я умею выполнять команды:\n/start\n/help")
+    await message.answer("Я умею выполнять команды:\n/start\n/help\n/photo\n/voice\n/video\n/training\n/weather")
 
 @dp.message(CommandStart())
 async def start(message: Message):
