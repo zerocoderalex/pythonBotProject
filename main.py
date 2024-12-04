@@ -5,11 +5,13 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, FSInputFile
 from config import TOKEN, API_KEY
 import random
+from googletrans import Translator
 from gtts import gTTS
 import os
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
+translator = Translator()
 
 @dp.message(Command('video'))
 async def video(message: Message):
@@ -59,10 +61,6 @@ async def react_photo(message: Message):
     await message.answer(rand_answ)
     await bot.download(message.photo[-1], destination=f'img/{message.photo[-1].file_id}.jpg')
 
-@dp.message(F.text =='Кто ты?')
-async def answ_mes(message: Message):
-    await message.answer('Я искусственный интеллект.')
-
 @dp.message(Command('help'))
 async def helps(message: Message):
     await message.answer("Я умею выполнять команды:\n/start\n/help")
@@ -84,9 +82,10 @@ async def weather(message: Message):
     else:
         await message.answer('Не удалось получить данные о погоде.')
 
-@dp.message()
-async def start(message: Message):
-    await message.send_copy(chat_id=message.chat.id)
+@dp.message(F.text)
+async def translate_message(message: Message):
+    translated = translator.translate(message.text, dest='en')
+    await message.answer(translated.text)
 
 async def main():
     await dp.start_polling(bot)
