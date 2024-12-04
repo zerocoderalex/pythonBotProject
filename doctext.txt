@@ -1,0 +1,24 @@
+# Импортируем ткинтер
+import tkinter as tk
+# Создаем функцию
+def приветствие():
+    имя = entry.get()  # Получаем текст из поля ввода
+    сообщение = f"Привет, {имя}!"  # Формируем приветственное сообщение
+    label_приветствие.config(text=сообщение)  # Обновляем текст метки
+# Создаем главное окно
+root = tk.Tk()
+root.title("Приветствие")
+# Создаем  инструкцию
+label_instruction = tk.Label(root, text="Введите ваше имя:")
+label_instruction.pack(pady=10)
+# Создаем поле ввода
+entry = tk.Entry(root)
+entry.pack(pady=5)
+# Создаем кнопку для ввода
+button = tk.Button(root, text="Привет, машина!", command=приветствие)
+button.pack(pady=10)
+# Создаем вывод приветствия
+label_приветствие = tk.Label(root, text="")
+label_приветствие.pack(pady=10)
+# Запускаем  цикл
+root.mainloop()

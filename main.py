@@ -18,10 +18,15 @@ async def video(message: Message):
     await bot.send_video(message.chat.id, video)
 
 
-@dp.message(Command('audio'))
-async def audio(message: Message):
-    audio = FSInputFile('audio.ogg')
-    await bot.send_audio(message.chat.id, audio)
+@dp.message(Command('voice'))
+async def voice(message: Message):
+    voice = FSInputFile('audio.ogg')
+    await message.answer_voice(voice)
+
+@dp.message(Command('doc'))
+async def doc(message: Message):
+    doc = FSInputFile('doctext.txt')
+    await bot.send_document(message.chat.id, doc)
 
 @dp.message(Command('training'))
 async def training(message: Message):
@@ -34,10 +39,10 @@ async def training(message: Message):
    await message.answer(f"Это ваша мини-тренировка на сегодня {rand_tr}")
 
    tts = gTTS(text=rand_tr, lang='ru')
-   tts.save("training.mp3")
-   audi = FSInputFile('training.mp3')
+   tts.save("training.ogg")
+   audi = FSInputFile('training.ogg')
    await bot.send_audio(message.chat.id, audi)
-   os.remove("training.mp3")
+   os.remove("training.ogg")
 
 
 @dp.message(Command('photo'))
