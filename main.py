@@ -18,7 +18,8 @@ async def video(message: Message):
 
 @dp.message(Command('audio'))
 async def audio(message: Message):
-    await message.answer("Этот бот умеет выполнять команды:\\n/start\\n/help\\n/minitraining")
+    audio = FSInputFile('audio.ogg')
+    await bot.send_audio(message.chat.id, audio)
 
 
 
