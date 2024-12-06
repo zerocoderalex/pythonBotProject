@@ -73,9 +73,19 @@ async def city(message: Message, state:FSMContext):
                 weather_data = await response.json()
                 main = weather_data['main']
                 weather = weather_data['weather'][0]
-                
 
+                temperature = main['temp']
+                humidity = main['humidity']
+                description = weather['description']
 
+                weather_report = (f"Город - {user_data['city']}\n"
+                                  f"Температура - {temperature}\n"
+                                  f"Влажность воздуха - {humidity}\n"
+                                  f"Описание погоды - {description}")
+                await message.answer(weather_report)
+            else:
+                await message.answer("Не удалось получить данные о погоде")
+        await state.clear()
 
 async def main():
     await dp.start_polling(bot)
