@@ -67,6 +67,14 @@ async def city(message: Message, state:FSMContext):
     conn.commit()
     conn.close()
 
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f"http://api.openweathermap.org/data/2.5/weather?q={user_data['city']}&appid={API_KEY}&units=metric") as response:
+            if response.status == 200:
+                weather_data = await response.json()
+                main = weather_data['main']
+                weather = weather_data['weather'][0]
+                
+
 
 
 async def main():
