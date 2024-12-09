@@ -68,7 +68,8 @@ async def helps(message: Message):
 
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer(f'Привет, бот  {message.from_user.first_name}!', reply_markup=kb.main)
+    await message.answer(f'Привет, бот  {message.from_user.first_name}!', reply_markup=kb.inline_keyboard_test)
+
 
 @dp.message(Command('weather'))
 async def weather(message: Message):
