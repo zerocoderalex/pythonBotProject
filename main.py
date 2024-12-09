@@ -95,11 +95,11 @@ async def start(message: Message):
 
 @dp.message(Command('links'))
 async def links(message: Message):
-    await message.answer( 'Привет', reply_markup=kb.inline_keyboard_test)
+    await message.answer( 'Посмотри:', reply_markup=kb.inline_keyboard_test)
 
 @dp.message(Command('dynamic'))
 async def dynamic(message: Message):
-    await message.answer( 'Привет', reply_markup=kb.inline_keyboard)
+    await message.answer( 'Узнай:', reply_markup=kb.inline_keyboard)
 
 @dp.message(Command('weather'))
 async def weather(message: Message):
