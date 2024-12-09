@@ -14,6 +14,14 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 translator = Translator()
 
+@dp.message(F.text == "Привет!")
+async def test_button(message: Message):
+   await message.answer(f'Привет, {message.from_user.first_name}!')
+
+@dp.message(F.text == "Пока!")
+async def test_button(message: Message):
+   await message.answer(f'До свидания, {message.from_user.first_name}!')
+
 @dp.message(Command('video'))
 async def video(message: Message):
     await bot.send_chat_action(message.chat.id, 'upload_video')
@@ -68,8 +76,7 @@ async def helps(message: Message):
 
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer(f'Привет, бот  {message.from_user.first_name}!', reply_markup=kb.inline_keyboard_test)
-
+    await message.answer(f'Привет, {message.from_user.first_name}!', reply_markup=kb.main)
 
 @dp.message(Command('weather'))
 async def weather(message: Message):
