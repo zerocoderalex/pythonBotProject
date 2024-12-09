@@ -9,16 +9,20 @@ main = ReplyKeyboardMarkup(keyboard=[
 inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
    [InlineKeyboardButton(text="Видео", url="https://www.youtube.com/watch?v=HfaIcB4Ogxk")],
    [InlineKeyboardButton(text="Музыка", url="https://www.youtube.com/watch?v=0ThIonKfSHo")],
-   [InlineKeyboardButton(text="Новости", url="https://www.youtube.com/watch?v=WojvsDImVTQ")]
+   [InlineKeyboardButton(text="Новости", url="https://www.youtube.com/watch?v=WojvsDImVTQ")],
+
 ])
 
-test = ["кнопка 1", "кнопка 2", "кнопка 3", "кнопка 4"]
+test = ["Опция 1", "Опция 2"]
 
 async def test_keyboard():
    keyboard = InlineKeyboardBuilder()
-   for key in test:
-       keyboard.add(InlineKeyboardButton(text=key))
-   return keyboard.adjust(2).as_markup()
+   keyboard.add(InlineKeyboardButton(text="Опция 1", callback_data="option_1"))
+   keyboard.add(InlineKeyboardButton(text="Опция 2", callback_data="option_2"))
+   return keyboard.as_markup()
 
+inline_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+   [InlineKeyboardButton(text="Показать больше", callback_data='more')]
+])
 
 
