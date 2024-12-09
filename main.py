@@ -78,6 +78,10 @@ async def helps(message: Message):
 async def start(message: Message):
     await message.answer(f'Привет, {message.from_user.first_name}!', reply_markup=kb.main)
 
+@dp.message(Command('links'))
+async def links(message: Message):
+    await message.answer( 'Привет', reply_markup=kb.inline_keyboard_test)
+
 @dp.message(Command('weather'))
 async def weather(message: Message):
     # Получение данных о погоде

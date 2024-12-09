@@ -8,7 +8,8 @@ main = ReplyKeyboardMarkup(keyboard=[
 
 inline_keyboard_test = InlineKeyboardMarkup(inline_keyboard=[
    [InlineKeyboardButton(text="Видео", url="https://www.youtube.com/watch?v=HfaIcB4Ogxk")],
-   [InlineKeyboardButton(text="Музыка", url="https://www.youtube.com/watch?v=0ThIonKfSHo")]
+   [InlineKeyboardButton(text="Музыка", url="https://www.youtube.com/watch?v=0ThIonKfSHo")],
+   [InlineKeyboardButton(text="Новости", url="https://www.youtube.com/watch?v=WojvsDImVTQ")]
 ])
 
 test = ["кнопка 1", "кнопка 2", "кнопка 3", "кнопка 4"]
