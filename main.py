@@ -8,6 +8,7 @@ import random
 from googletrans import Translator
 from gtts import gTTS
 import os
+import keyboard as kb
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -67,7 +68,7 @@ async def helps(message: Message):
 
 @dp.message(CommandStart())
 async def start(message: Message):
-    await message.answer(f'Привет, бот  {message.from_user.first_name}!')
+    await message.answer(f'Привет, бот  {message.from_user.first_name}!', reply_markup=kb.main)
 
 @dp.message(Command('weather'))
 async def weather(message: Message):
