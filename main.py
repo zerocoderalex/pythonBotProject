@@ -104,7 +104,7 @@ async def dynamic(message: Message):
 @dp.message(Command('weather'))
 async def weather(message: Message):
     # Получение данных о погоде
-    url = f'http://api.openweathermap.org/data/2.5/weather?q=Москва&appid={API_KEY}&units=metric'
+    url = f'http://api.openweathermap.org/data/2.5/weather?q=Москва&appid={WEATHER_API_KEY}&units=metric'
     response = requests.get(url)
 
     if response.status_code == 200:
