@@ -3,7 +3,7 @@ import requests
 from aiogram import Bot, Dispatcher, F
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, FSInputFile, CallbackQuery
-from config import TOKEN, API_KEY
+from config import TOKEN, WEATHER_API_KEY
 import random
 from googletrans import Translator
 from gtts import gTTS
