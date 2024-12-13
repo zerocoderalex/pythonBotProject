@@ -28,6 +28,20 @@ async def random_apod(message: Message):
 
    await message.answer_photo(photo=photo_url, caption=f"{title}")
 
+@dp.message(Command('space'))
+async def space(message: Message):
+    url = f'https://api.spacexdata.com/v3/rockets/falcon9'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+       falcon9 = response.json()
+       rocket_name = falcon9['rocket_name']
+       first_flight = falcon9["first_flight"]
+       await message.answer(f'Тип ракеты {rocket_name},первый полет {first_flight}')
+    else:
+       await message.answer('Не удалось получить данные.')
+
+
 
 
 async def main():
